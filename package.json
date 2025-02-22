@@ -1,0 +1,29 @@
+{
+  "name": "uptime-bot",
+  "version": "1.0.0",
+  "description": "Telegram bot for monitoring URL uptime",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "node --loader ts-node/esm src/index.ts",
+    "lint": "eslint . --ext .ts",
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "grammy": "^1.35.0",
+    "axios": "^1.7.9",
+    "dotenv": "^16.4.7"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "@types/node": "^22.13.5",
+    "@typescript-eslint/eslint-plugin": "^8.24.1",
+    "@typescript-eslint/parser": "^8.24.1",
+    "eslint": "^9.21.0",
+    "globals": "^13.24.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  }
+}

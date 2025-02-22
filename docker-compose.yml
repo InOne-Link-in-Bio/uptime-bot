@@ -1,0 +1,12 @@
+services:
+  bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - BOT_TOKEN
+      - MONITOR_URL
+      - NOTIFICATION_CHAT_IDS
+      - CHECK_INTERVAL
+      - REQUEST_TIMEOUT
+    restart: unless-stopped
