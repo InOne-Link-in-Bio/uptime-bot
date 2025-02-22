@@ -22,7 +22,23 @@ const requestTimeout = parseInt(process.env.REQUEST_TIMEOUT || "5000", 10);
 
 // Initialize bot
 bot.command("start", async (ctx) => {
-    await ctx.reply("Uptime monitoring bot is running! 🤖");
+    const senderChatId = ctx.chat.id.toString();
+    if (!chatIds.includes(senderChatId)) {
+        await ctx.reply(
+            "⚠️ Unauthorized: You are not allowed to use this bot.",
+        );
+        return;
+    }
+
+    const statusMessage =
+        "✅ Uptime monitoring bot is running!\n\n" +
+        "Configuration:\n" +
+        `🎯 Monitoring URL: ${monitorUrl}\n` +
+        `⏱ Check interval: ${checkIntervalSeconds} seconds\n` +
+        `⌛️ Request timeout: ${requestTimeout}ms\n` +
+        `📢 Notification chat IDs: ${chatIds.join(", ")}`;
+
+    await ctx.reply(statusMessage);
 });
 
 // Monitor function
